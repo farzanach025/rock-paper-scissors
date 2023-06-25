@@ -40,7 +40,7 @@ function autoplay() {
 
 document.querySelector(".js-rock-button").addEventListener("click", () => {
   playGame("rock");
-}); // we cant directly call playgame function to the addeventlistener, which will return a undefined value.
+}); // we cant directly call playgame function to the addeventlistener, which will return a undefined value!!.
 
 document.querySelector(".js-paper-button").addEventListener("click", () => {
   playGame("paper");
