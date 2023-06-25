@@ -36,7 +36,8 @@ body {
   margin-top: 60px;
 }
 
-.reset-score-button {
+.reset-score-button,
+.auto-play-button{
   background-color: white;
   border: none;
   cursor: pointer;
@@ -44,6 +45,7 @@ body {
   padding: 8px 15px;
 }
 
-.reset-score-button:hover {
+.reset-score-button:hover,
+.auto-play-button:hover {
   background-color: orange;
 }
