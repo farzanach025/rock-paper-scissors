@@ -18,20 +18,51 @@ localStorage.setItem('score', JSON.stringify(score));
 let isAutoPlaying = false;
 let intervalId;
 
+/*const autoPlay = () =>{
+
+} */
+
 function autoplay() {
   if (!isAutoPlaying) {
-    intervalId = setInterval(function () {
+    intervalId = setInterval(() => {
+      // remove function and added arrow function
       const playerMove = pickComputerMove();
       playGame(playerMove);
     }, 1000);
     isAutoPlaying = true;
-    document.querySelector('.auto-play-button').innerHTML = 'Stop Play'
+    document.querySelector(".auto-play-button").innerHTML = "Stop Play";
   } else {
     clearInterval(intervalId);
     isAutoPlaying = false;
-    document.querySelector('.auto-play-button').innerHTML = 'Auto Play'
+    document.querySelector(".auto-play-button").innerHTML = "Auto Play";
   }
 }
+
+document.querySelector(".js-rock-button").addEventListener("click", () => {
+  playGame("rock");
+}); // we cant directly call playgame function to the addeventlistener, which will return a undefined value.
+
+document.querySelector(".js-paper-button").addEventListener("click", () => {
+  playGame("paper");
+});
+
+document.querySelector(".js-scissors-button").addEventListener("click", () => {
+  playGame("scissors");
+});
+
+document
+  .querySelector(".js-reset-score-button")
+  .addEventListener("click", () => {
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    localStorage.clear();
+    updateScoreElement();
+  });
+
+document.querySelector(".js-auto-play-button").addEventListener("click", () => {
+  autoplay();
+});
 
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
