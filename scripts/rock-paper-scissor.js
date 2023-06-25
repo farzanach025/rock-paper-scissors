@@ -15,6 +15,24 @@ ties: 0
 localStorage.setItem('score', JSON.stringify(score));
 }*/
 
+let isAutoPlaying = false;
+let intervalId;
+
+function autoplay() {
+  if (!isAutoPlaying) {
+    intervalId = setInterval(function () {
+      const playerMove = pickComputerMove();
+      playGame(playerMove);
+    }, 1000);
+    isAutoPlaying = true;
+    document.querySelector('.auto-play-button').innerHTML = 'Stop Play'
+  } else {
+    clearInterval(intervalId);
+    isAutoPlaying = false;
+    document.querySelector('.auto-play-button').innerHTML = 'Auto Play'
+  }
+}
+
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
   let result = "";
